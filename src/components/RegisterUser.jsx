@@ -120,7 +120,7 @@ export default function RegisterUser() {
             className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
           />
           <span
-            className="absolute right-[3rem] top-[2.3rem] cursor-pointer"
+            className="absolute right-[1rem] top-[2.3rem] cursor-pointer"
             onClick={togglePasswordVisibility}
           >
             {" "}
@@ -158,7 +158,7 @@ export default function RegisterUser() {
             className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
           />
           <span
-            className="absolute right-[3rem] top-[2.3rem] cursor-pointer"
+            className="absolute right-[1rem] top-[2.3rem] cursor-pointer"
             onClick={toggleConfirmPasswordVisibility}
           >
             {" "}
@@ -190,7 +190,7 @@ export default function RegisterUser() {
           className={`${purposeFocus && !validPurpose ? "flex justify-center items-center gap-[0.3rem] bg-[#dc2626] text-white py-[0.3rem] rounded-[10px] mt-[0.3rem]" : "hidden"} `}
         >
           <BsExclamationCircle />
-          Customer or Merchant Only
+          Must be either Customer or Merchant
         </p>
         </div>
         <button
