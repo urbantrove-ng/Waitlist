@@ -66,11 +66,11 @@ export default function RegisterUser() {
   }
 
   return (
-    <div className=" text-center grid gap-[2rem] py-[1rem] pb-[3rem]">
-      <h1 className="text-[#444B59] text-[1.5rem] font-[600]">
+    <div className="lg:mt-0 text-center grid gap-[2rem] lg:gap-[1rem] py-[1rem] pb-[3rem]">
+      <h1 className="text-[#444B59] text-[1.5rem] lg:text-[1.4rem] lg:px-0 font-[600] text-center">
         HELLO, WELCOME TO URBAN TROVE'S WAITLIST!
       </h1>
-      <form action="" className="grid gap-[1rem] mx-[10rem] px-[3rem]">
+      <form action="" className="grid gap-[1rem] mx-[10rem] lg:mx-[0] px-[3rem] lg:px-0">
         <div className="grid justify-center">
           <label className="text-start text-[#475569] font-[400]" htmlFor="">
             Name
@@ -81,7 +81,7 @@ export default function RegisterUser() {
             placeholder="Enter Your Fullname"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className="w-[25rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#9ca3af]"
+            className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#9ca3af]"
           />
         </div>
         <div className="grid justify-center">
@@ -95,7 +95,7 @@ export default function RegisterUser() {
             onChange={(e) => setEmail(e.target.value)}
             onFocus={() => setEmailFocus(true)}
             onBlur={() => setEmailFocus(false)}
-            className="w-[25rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#9ca3af]"
+            className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#9ca3af]"
           />
           <p
             id="confirmnote"
@@ -117,7 +117,7 @@ export default function RegisterUser() {
             aria-describedby="pwdnote"
             onFocus={() => setPwdFocus(true)}
             onBlur={() => setPwdFocus(false)}
-            className="w-[25rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
+            className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
           />
           <span
             className="absolute right-[3rem] top-[2.3rem] cursor-pointer"
@@ -155,7 +155,7 @@ export default function RegisterUser() {
             aria-describedby="confirmnote"
             onFocus={() => setMatchFocus(true)}
             onBlur={() => setMatchFocus(false)}
-            className="w-[25rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
+            className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
           />
           <span
             className="absolute right-[3rem] top-[2.3rem] cursor-pointer"
@@ -183,7 +183,7 @@ export default function RegisterUser() {
             onChange={(e) => setPurpose(e.target.value)}
             onFocus={() => setPurposeFocus(true)}
             onBlur={() => setPurposeFocus(false)}
-            className="w-[25rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
+            className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
           />
           <p
           id="confirmnote"
@@ -203,7 +203,7 @@ export default function RegisterUser() {
             !validPurpose
           }
           onClick={registerUser}
-          className="bg-[#647C0C] mt-[1rem] w-[25rem] py-[0.7rem] rounded-[50px] text-[#fff] flex m-auto justify-center disabled:bg-[#ecfccb]"
+          className="bg-[#647C0C] mt-[1rem] w-[25rem] lg:w-[20rem] py-[0.7rem] rounded-[50px] text-[#fff] flex m-auto justify-center disabled:bg-[#ecfccb]"
         >
           Register
         </button>

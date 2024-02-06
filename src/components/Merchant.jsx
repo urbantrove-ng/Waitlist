@@ -13,8 +13,8 @@ export default function Merchant() {
     navigate("/success");
   }
   return (
-    <div className=" mt-[4rem] text-center grid gap-[2rem] text-[#444B59] px-[10rem] py-[1rem] pb-[3rem]">
-      <h1 className="text-[2rem] uppercase font-[700]">
+    <div className="mt-[4rem] lg:mt-0  text-center grid justify-center items-center gap-[2rem] lg:gap-[1rem] text-[#444B59] px-[10rem] lg:px-0 py-[1rem] pb-[3rem]">
+      <h1 className="text-[2rem] lg:text-[1.5rem] uppercase font-[700]">
         Hello Merchant, ready to make more money?
       </h1>
       <form action="" className="grid gap-[1rem]">
@@ -25,7 +25,7 @@ export default function Merchant() {
           <input
             type="text"
             ref={userRef}
-            className="w-[25rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none"
+            className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none"
           />
         </div>
         <div className="grid justify-center">
@@ -34,10 +34,10 @@ export default function Merchant() {
           </label>
           <input
             type="text"
-            className="w-[25rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none"
+            className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none"
           />
         </div>
-        <button onClick={successful} className="bg-[#647C0C] text-[1.1rem] mt-[1rem] w-[25rem] py-[0.7rem] rounded-[50px] text-[#fff] flex m-auto justify-center">
+        <button onClick={successful} className="bg-[#647C0C] text-[1.1rem] mt-[1rem] w-[25rem] lg:w-[20rem] py-[0.7rem] rounded-[50px] text-[#fff] flex m-auto justify-center">
           Continue
         </button>
       </form>
