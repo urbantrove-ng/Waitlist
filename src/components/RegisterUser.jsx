@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { BsExclamationCircle } from "react-icons/bs"; 
-
+import { post } from "../services/api";
 
 export default function RegisterUser() {
   const [fullName, setFullName] = useState("");
@@ -61,14 +61,24 @@ export default function RegisterUser() {
     setShowConfirmPassword(!showConfirmPassword);
   }
 
-  function registerUser() {
-    navigate("/merchant");
+  async function registerUser(e) {
+    e.preventDefault()
+    const response = await post('/api/v1/auth/waitlist',{
+      fullname:fullName,email,password,registeredAs:purpose
+    })
+   if(response&& typeof response !== 'undefined'){
+       if(response.body.data._doc.registeredAs.toLowerCase() === "merchant"){
+        return navigate(`/merchant?id=${response.body.data._doc._id}`);
+       }else{
+        return navigate("/success")
+       }
+   }
   }
 
   return (
     <div className="lg:mt-0 text-center grid gap-[2rem] lg:gap-[1rem] py-[1rem] pb-[3rem]">
       <h1 className="text-[#444B59] text-[1.5rem] lg:text-[1.4rem] lg:px-0 font-[600] text-center">
-        HELLO, WELCOME TO URBAN TROVE'S WAITLIST!
+        HELLO, WELCOME TO URBAN TROVE&apos;S WAITLIST!
       </h1>
       <form action="" className="grid gap-[1rem] mx-[10rem] lg:mx-[0] px-[3rem] lg:px-0">
         <div className="grid justify-center">

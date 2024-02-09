@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { patch } from "../services/api";
 
 export default function Merchant() {
   //   const userRef = useRef();
   const navigate = useNavigate();
-  const [products, setProducts] = useState("")
-  const [services, setServices] = useState("")
-  const [selectCategory, setSelectCategory] = useState('')
-
-  //   useEffect(() => {
-  //     userRef.current.focus();
-  //   }, []);
+  const [products, setProducts] = useState("shoes")
+  const [services, setServices] = useState("restaurants")
+  const [selectCategory, setSelectCategory] = useState('service')
+  const [searchParams,setSearchParams] = useSearchParams()
+  const userId = searchParams.get('id')
 
   function handleCategory(e){
     setSelectCategory(e.target.value);
@@ -22,8 +22,17 @@ export default function Merchant() {
     setServices(e.target.value)
   }
 
-  function successful() {
-    navigate("/success");
+  async function successful(e) {
+  e.preventDefault()
+  console.log(selectCategory,products,services)
+   const response = await patch('/api/v1/auth/waitlist',{
+      id:userId,
+      category:selectCategory === "product"?products:services,
+      merchantCategory:selectCategory
+    })
+if(response&& typeof response !== 'undefined'){
+  return navigate("/success")
+}
   }
   return (
     <div className="mt-[2rem] lg:mt-0  text-center grid justify-center items-center gap-[2rem] lg:gap-[1rem] text-[#444B59] px-[10rem] lg:px-0 py-[1rem] pb-[3rem]">
