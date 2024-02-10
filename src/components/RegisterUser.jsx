@@ -77,7 +77,7 @@ export default function RegisterUser() {
 
   return (
     <div className="lg:mt-0 text-center grid gap-[2rem] lg:gap-[1rem] py-[1rem] pb-[3rem]">
-      <h1 className="text-[#444B59] text-[1.5rem] lg:text-[1.4rem] lg:px-0 font-[600] text-center">
+      <h1 className="text-[#444B59] text-[1.5rem] lg:text-[1.4rem] lg:px-0 font-[600] text-center z-40">
         HELLO, WELCOME TO URBAN TROVE&apos;S WAITLIST!
       </h1>
       <form action="" className="grid gap-[1rem] mx-[10rem] lg:mx-[0] px-[3rem] lg:px-0">
