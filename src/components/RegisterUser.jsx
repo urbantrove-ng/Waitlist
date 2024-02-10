@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { BsExclamationCircle } from "react-icons/bs"; 
+import { BsExclamationCircle } from "react-icons/bs";
 import { post } from "../services/api";
 
 export default function RegisterUser() {
@@ -19,14 +19,10 @@ export default function RegisterUser() {
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
-  const [purpose, setPurpose] = useState("");
-  const [validPurpose, setValidPurpose] = useState(false);
-  const [purposeFocus, setPurposeFocus] = useState(false);
-
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [selectCategory, setSelectCategory] = useState("");
 
   const userRef = useRef();
   const navigate = useNavigate();
@@ -48,11 +44,9 @@ export default function RegisterUser() {
     setValidEmail(EMAIL_REGEX.test(email));
   }, [email, EMAIL_REGEX]);
 
-  useEffect(() => {
-    const input = purpose.toLowerCase(); // Convert input to lowercase for case-insensitive comparison
-    const isValid = input === "merchant" || input === "customer";
-    setValidPurpose(isValid);
-  }, [purpose]);
+  function handleCategory(e) {
+    setSelectCategory(e.target.value);
+  }
 
   function togglePasswordVisibility() {
     setShowPassword(!showPassword);
@@ -62,17 +56,20 @@ export default function RegisterUser() {
   }
 
   async function registerUser(e) {
-    e.preventDefault()
-    const response = await post('/api/v1/auth/waitlist',{
-      fullname:fullName,email,password,registeredAs:purpose
-    })
-   if(response&& typeof response !== 'undefined'){
-       if(response.body.data._doc.registeredAs.toLowerCase() === "merchant"){
+    e.preventDefault();
+    const response = await post("/api/v1/auth/waitlist", {
+      fullname: fullName,
+      email,
+      password,
+      registeredAs: selectCategory,
+    });
+    if (response && typeof response !== "undefined") {
+      if (response.body.data._doc.registeredAs.toLowerCase() === "merchant") {
         return navigate(`/merchant?id=${response.body.data._doc._id}`);
-       }else{
-        return navigate("/success")
-       }
-   }
+      } else {
+        return navigate("/success");
+      }
+    }
   }
 
   return (
@@ -80,7 +77,10 @@ export default function RegisterUser() {
       <h1 className="text-[#444B59] text-[1.5rem] lg:text-[1.4rem] lg:px-0 font-[600] text-center z-40">
         HELLO, WELCOME TO URBAN TROVE&apos;S WAITLIST!
       </h1>
-      <form action="" className="grid gap-[1rem] mx-[10rem] lg:mx-[0] px-[3rem] lg:px-0">
+      <form
+        action=""
+        className="grid gap-[1rem] mx-[10rem] lg:mx-[0] px-[3rem] lg:px-0"
+      >
         <div className="grid justify-center">
           <label className="text-start text-[#475569] font-[400]" htmlFor="">
             Name
@@ -109,7 +109,11 @@ export default function RegisterUser() {
           />
           <p
             id="confirmnote"
-            className={`${emailFocus && !validEmail ? "flex justify-center items-center gap-[0.3rem] bg-[#dc2626] text-white py-[0.3rem] rounded-[10px] mt-[0.3rem]" : "hidden"} `}
+            className={`${
+              emailFocus && !validEmail
+                ? "flex justify-center items-center gap-[0.3rem] bg-[#dc2626] text-white py-[0.3rem] rounded-[10px] mt-[0.3rem]"
+                : "hidden"
+            } `}
           >
             <BsExclamationCircle />
             Enter Valid Email Address
@@ -137,21 +141,25 @@ export default function RegisterUser() {
             {showPassword ? <FaEye /> : <FaEyeSlash />}
           </span>
           <p
-          id="pwdnote"
-          className={`${pwdFocus && !validPwd ? "flex justify-center gap-[0.3rem] bg-[#dc2626] text-white py-[0.3rem] rounded-[10px] mt-[0.3rem]" : "hidden"} `}
+            id="pwdnote"
+            className={`${
+              pwdFocus && !validPwd
+                ? "flex justify-center gap-[0.3rem] bg-[#dc2626] text-white py-[0.3rem] rounded-[10px] mt-[0.3rem]"
+                : "hidden"
+            } `}
           >
-          <BsExclamationCircle className="mt-[0.2rem] mr-[-3rem]"/>
-          Must Contain
-          <br />
-          8-24 Characters
-          <br />
-          Uppercase and Lowercase
-          <br />
-          Special Character (!@#$%)
-          <br />
-          A Number
-          <br />
-        </p>
+            <BsExclamationCircle className="mt-[0.2rem] mr-[-3rem]" />
+            Must Contain
+            <br />
+            8-24 Characters
+            <br />
+            Uppercase and Lowercase
+            <br />
+            Special Character (!@#$%)
+            <br />
+            A Number
+            <br />
+          </p>
         </div>
         <div className="grid justify-center relative">
           <label className="text-start text-[#475569] font-[400]" htmlFor="">
@@ -175,42 +183,40 @@ export default function RegisterUser() {
             {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
           </span>
           <p
-          id="confirmnote"
-          className={`${matchFocus && !validMatch ? "flex justify-center gap-[0.3rem] bg-[#dc2626] text-white py-[0.3rem] rounded-[10px] mt-[0.3rem]" : "hidden"} `}
-        >
-          <BsExclamationCircle />
-          Must match password.
-        </p>
+            id="confirmnote"
+            className={`${
+              matchFocus && !validMatch
+                ? "flex justify-center gap-[0.3rem] bg-[#dc2626] text-white py-[0.3rem] rounded-[10px] mt-[0.3rem]"
+                : "hidden"
+            } `}
+          >
+            <BsExclamationCircle />
+            Must match password.
+          </p>
         </div>
         <div className="grid justify-center">
           <label className="text-start text-[#475569] font-[400]" htmlFor="">
             <p>What are you signing up as today?</p>
             <p>MERCHANT OR CUSTOMER</p>
           </label>
-          <input
-            type="text"
-            value={purpose}
-            onChange={(e) => setPurpose(e.target.value)}
-            onFocus={() => setPurposeFocus(true)}
-            onBlur={() => setPurposeFocus(false)}
-            className="w-[25rem] lg:w-[20rem] py-[0.5rem] px-[0.5rem] rounded-[20px] border-[#647C0C] border-[1px] focus:outline-none placeholder:text-[#cbd5e1]"
-          />
-          <p
-          id="confirmnote"
-          className={`${purposeFocus && !validPurpose ? "flex justify-center items-center gap-[0.3rem] bg-[#dc2626] text-white py-[0.3rem] rounded-[10px] mt-[0.3rem]" : "hidden"} `}
-        >
-          <BsExclamationCircle />
-          Must be either Customer or Merchant
-        </p>
+          <select
+            className="w-[25rem] lg:h-[3rem] bg-white lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
+            name="category"
+            id="category"
+            value={selectCategory}
+            onChange={handleCategory}
+          >
+            <option value="customer">Customer</option>
+            <option value="merchant">Merchant</option>
+          </select>
         </div>
         <button
-         disabled={
+          disabled={
             isLoading ||
             fullName === "" ||
             !validEmail ||
             !validPwd ||
-            !validMatch ||
-            !validPurpose
+            !validMatch
           }
           onClick={registerUser}
           className="bg-[#647C0C] mt-[1rem] w-[25rem] lg:w-[20rem] py-[0.7rem] rounded-[50px] text-[#fff] flex m-auto justify-center disabled:bg-[#ecfccb]"

@@ -7,7 +7,7 @@ import SuccessPage from "./components/SuccessPage";
 
 export default function App() {
   return (
-    <div className="flex my-[8rem] justify-center items-center lg:my-[0.1rem] lg:flex-col-reverse">
+    <div className="flex my-[8rem] justify-center items-center lg:my-[0.1rem]  lg:flex-col-reverse">
       <div className="w-[50%] lg:w-[20rem] grid">
         <Router>
           <Routes>
@@ -17,8 +17,8 @@ export default function App() {
           </Routes>
         </Router>
       </div>
-      <div className="w-[50%] lg:w-[20rem]">
-        <div className="w-[43rem] h-[35rem] flex m-auto items-start lg:h-[32vh] lg:w-[82vw]">
+      <div className="w-[50%] sm:w-[20rem]">
+        <div className="w-[43rem] h-[35rem] flex m-auto items-start lg:w-[25rem] lg:h-[20rem] sm:h-[32vh] sm:w-[82vw]">
           <img className="w-full h-[full]" src={logo} alt="" />
         </div>
       </div>
