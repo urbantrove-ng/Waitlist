@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { patch } from "../services/api";
+import { productsData, serviceData } from "./data";
 
 export default function Merchant() {
   //   const userRef = useRef();
@@ -67,11 +68,11 @@ if(response&& typeof response !== 'undefined'){
             value={products}
             onChange={handleProduct}
           >
-            <option value="shoes">Shoes</option>
-            <option value="accessories">Accessories</option>
-            <option value="bags">Bags</option>
-            <option value="skincare">Skincare</option>
-            <option value="gadgets">Gadgets</option>
+            {productsData.map((product)=>{
+              const {name, value} = product;
+
+              return <option value={value}>{name}</option>
+            })}
           </select>
           ) : (
             <select
@@ -81,9 +82,11 @@ if(response&& typeof response !== 'undefined'){
             value={services}
             onChange={handleService}
           >
-            <option value="restaurants">Restaurants</option>
-            <option value="salons">Salons</option>
-            <option value="spas">Spas</option>
+            {serviceData.map((service)=>{
+              const {name, value} = service;
+
+              return <option value={value}>{name}</option>
+            })}
           </select>
           )}
         </div>
