@@ -21,7 +21,7 @@ export default function Merchant() {
   }
   function handleService(e){
     setServices(e.target.value)
-  }
+  } 
 
   async function successful(e) {
   e.preventDefault()
@@ -46,7 +46,7 @@ if(response&& typeof response !== 'undefined'){
         </label>
         <div className="grid justify-center">
           <select
-            className="w-[25rem] lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
+            className="w-[25rem] lg:h-[3rem] bg-white lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
             name="category"
             id="category"
             value={selectCategory}
@@ -62,7 +62,7 @@ if(response&& typeof response !== 'undefined'){
         </label>
           {selectCategory === "product" ? (
             <select
-            className="w-[25rem] lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
+            className="w-[25rem] lg:h-[3rem] bg-white lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
             name="products"
             id="products"
             value={products}
@@ -76,7 +76,7 @@ if(response&& typeof response !== 'undefined'){
           </select>
           ) : (
             <select
-            className="w-[25rem] lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
+            className="w-[25rem] lg:h-[3rem] bg-white lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
             name="products"
             id="products"
             value={services}
