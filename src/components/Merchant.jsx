@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import{ useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { patch } from "../services/api";
-import { productsData, serviceData } from "./data";
+import { productsData, serviceData } from "../constants/data";
 
 export default function Merchant() {
   //   const userRef = useRef();
   const navigate = useNavigate();
-  const [products, setProducts] = useState("shoes")
-  const [services, setServices] = useState("restaurants")
+  const [products, setProducts] = useState(productsData[0])
+  const [services, setServices] = useState(serviceData[0])
   const [selectCategory, setSelectCategory] = useState('service')
   const [searchParams,setSearchParams] = useSearchParams()
   const userId = searchParams.get('id')
@@ -68,10 +68,10 @@ if(response&& typeof response !== 'undefined'){
             value={products}
             onChange={handleProduct}
           >
-            {productsData.map((product)=>{
+            {productsData.map((product,index)=>{
               const {name, value} = product;
 
-              return <option value={value}>{name}</option>
+              return <option key={index} value={value}>{name}</option>
             })}
           </select>
           ) : (
@@ -82,10 +82,10 @@ if(response&& typeof response !== 'undefined'){
             value={services}
             onChange={handleService}
           >
-            {serviceData.map((service)=>{
+            {serviceData.map((service,index)=>{
               const {name, value} = service;
 
-              return <option value={value}>{name}</option>
+              return <option key={index} value={value}>{name}</option>
             })}
           </select>
           )}
