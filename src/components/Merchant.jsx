@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { patch } from "../services/api";
+import { productsData, serviceData } from "./data";
 
 export default function Merchant() {
   //   const userRef = useRef();
@@ -20,7 +21,7 @@ export default function Merchant() {
   }
   function handleService(e){
     setServices(e.target.value)
-  }
+  } 
 
   async function successful(e) {
   e.preventDefault()
@@ -45,7 +46,7 @@ if(response&& typeof response !== 'undefined'){
         </label>
         <div className="grid justify-center">
           <select
-            className="w-[25rem] lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
+            className="w-[25rem] lg:h-[3rem] bg-white lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
             name="category"
             id="category"
             value={selectCategory}
@@ -61,29 +62,31 @@ if(response&& typeof response !== 'undefined'){
         </label>
           {selectCategory === "product" ? (
             <select
-            className="w-[25rem] lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
+            className="w-[25rem] lg:h-[3rem] bg-white lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
             name="products"
             id="products"
             value={products}
             onChange={handleProduct}
           >
-            <option value="shoes">Shoes</option>
-            <option value="accessories">Accessories</option>
-            <option value="bags">Bags</option>
-            <option value="skincare">Skincare</option>
-            <option value="gadgets">Gadgets</option>
+            {productsData.map((product)=>{
+              const {name, value} = product;
+
+              return <option value={value}>{name}</option>
+            })}
           </select>
           ) : (
             <select
-            className="w-[25rem] lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
+            className="w-[25rem] lg:h-[3rem] bg-white lg:w-[20rem] py-[1rem] px-[1rem] rounded-[50px] border-[#647C0C] border-[1px] focus:outline-none"
             name="products"
             id="products"
             value={services}
             onChange={handleService}
           >
-            <option value="restaurants">Restaurants</option>
-            <option value="salons">Salons</option>
-            <option value="spas">Spas</option>
+            {serviceData.map((service)=>{
+              const {name, value} = service;
+
+              return <option value={value}>{name}</option>
+            })}
           </select>
           )}
         </div>

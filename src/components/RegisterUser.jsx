@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { BsExclamationCircle } from "react-icons/bs";
-import { post } from "../services/api";
+import { post } from "../services/api"; 
 
 export default function RegisterUser() {
   const [fullName, setFullName] = useState("");
