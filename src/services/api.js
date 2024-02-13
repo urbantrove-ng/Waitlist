@@ -2,7 +2,7 @@ import axios from 'axios';
 import swal from 'sweetalert2'
 
 const axiosRequest = axios.create({
-    baseURL:'http://191.96.31.128:8080'
+    baseURL:'https://urbantrov.tech'
 })
 
 export const fetch = async (url)=>{

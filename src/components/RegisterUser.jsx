@@ -22,7 +22,7 @@ export default function RegisterUser() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectCategory, setSelectCategory] = useState("");
+  const [selectCategory, setSelectCategory] = useState("customer");
 
   const userRef = useRef();
   const navigate = useNavigate();
@@ -46,6 +46,7 @@ export default function RegisterUser() {
 
   function handleCategory(e) {
     setSelectCategory(e.target.value);
+
   }
 
   function togglePasswordVisibility() {
